@@ -1,4 +1,4 @@
-package com.zq.zqplayer.user;
+package com.zq.zqplayer.userjpa;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

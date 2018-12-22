@@ -1,4 +1,4 @@
-package com.zq.zqplayer.user;
+package com.zq.zqplayer.userjpa;
 
 import java.util.List;
 

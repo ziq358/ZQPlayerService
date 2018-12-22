@@ -1,4 +1,4 @@
-package com.zq.zqplayer.user;
+package com.zq.zqplayer.userjpa;
 
 import com.zq.zqplayer.ResultModel;
 import com.zq.zqplayer.ResultModelTool;

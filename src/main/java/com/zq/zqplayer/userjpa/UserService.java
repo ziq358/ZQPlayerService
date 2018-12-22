@@ -1,4 +1,4 @@
-package com.zq.zqplayer.user;
+package com.zq.zqplayer.userjpa;
 
 import com.zq.zqplayer.ErrorCode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class UserService implements IUserService {
     @Override
     public int addUser(User user) {
         if (jpaUserRepository.existsById(user.getId())){
-            System.out.println("user  is existed");
+            System.out.println("userjpa  is existed");
             return ErrorCode.EXISTUSER;
         }
         User saveUser = jpaUserRepository.save(user);
