@@ -5,3 +5,7 @@ spring:
     url: jdbc:mysql://localhost:3306/zqplayer?useSSL=false
     username: root
     password: root
+
+mybatis:
+  mapper-locations: classpath:mybatis_starter/mapper/*.xml
+  config-location: classpath:mybatis_starter/config.xml
