@@ -66,7 +66,7 @@ public class ZqplayerApplicationTests {
     @Test
     public void mybatisStarterText() {
         User user = userMapper.getUserById(1);
-        System.out.println("mybatisStarterText :: "+user.getName());
+        System.out.println("mybatisStarterText :: " + user.getName());
     }
 
 }

@@ -2,9 +2,9 @@ server:
   port: 8080
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/zqplayer?useSSL=false
+    url: jdbc:mysql://193.112.65.251:3307/zqplayer?useSSL=false
     username: root
-    password: root
+    password: zaiqiang
 
 mybatis:
   mapper-locations: classpath:mybatis_starter/mapper/*.xml
