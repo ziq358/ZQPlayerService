@@ -9,3 +9,7 @@ spring:
 mybatis:
   mapper-locations: classpath:mybatis_starter/mapper/*.xml
   config-location: classpath:mybatis_starter/config.xml
+
+zqconfig: #自定义配置
+  author: zaiqiang333
+

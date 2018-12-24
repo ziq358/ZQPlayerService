@@ -16,13 +16,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
+import com.zq.zqplayer.config.ZQConfig;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ZqplayerApplicationTests {
+public class ConfigurationProcessorTests {
+
+    @Autowired
+    private ZQConfig zqConfig;
 
     @Test
-    public void contextLoads() {
+    public void configTest() {
+        System.out.println(zqConfig.getAuthor());
     }
+
 }
