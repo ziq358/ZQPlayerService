@@ -34,4 +34,6 @@ dependencies {
     compile "org.mybatis:mybatis:+"//3.4.6
     runtime('mysql:mysql-connector-java:8.0.12')
     compile "org.springframework.boot:spring-boot-configuration-processor"//自定义配置
+    compile "org.projectlombok:lombok"//注解 生成 部分代码 如 getter setter
+
 }

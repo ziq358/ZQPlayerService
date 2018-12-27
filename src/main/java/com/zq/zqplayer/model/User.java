@@ -1,11 +1,17 @@
-package com.zq.zqplayer.userjpa;
+package com.zq.zqplayer.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+*
+* @author
+* @since
+*/
 @Entity
+@lombok.Data
 @Table(name = "user")
 public class User {
     @Id
@@ -24,27 +30,4 @@ public class User {
         this.age = age;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
 }

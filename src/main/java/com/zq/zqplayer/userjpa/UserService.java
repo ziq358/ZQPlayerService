@@ -1,36 +1,37 @@
 package com.zq.zqplayer.userjpa;
 
 import com.zq.zqplayer.ErrorCode;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;import org.slf4j.LoggerFactory;import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.zq.zqplayer.model.User;
 
 @Service
 public class UserService implements IUserService {
+private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     JpaUserRepository jpaUserRepository;
 
     @Override
-    public List<User> getAllUser() {
-        List<User> users = jpaUserRepository.findAll();
-        System.out.println(users.toString());
+    public java.util.List<User> getAllUser() {
+        java.util.List<User> users = jpaUserRepository.findAll();
+        LOG.info(users.toString());
         return users;
     }
 
     @Override
     public int addUser(User user) {
         if (jpaUserRepository.existsById(user.getId())){
-            System.out.println("userjpa  is existed");
+            LOG.info("userjpa  is existed");
             return ErrorCode.EXISTUSER;
         }
         User saveUser = jpaUserRepository.save(user);
         if (saveUser != null && saveUser.getId() == user.getId()) {
-            System.out.println("save success");
+            LOG.info("save success");
             return ErrorCode.ADDSUCCESS;
         } else {
-            System.out.println("save failure");
+            LOG.info("save failure");
             return ErrorCode.ADDFAIL;
         }
     }
@@ -39,10 +40,10 @@ public class UserService implements IUserService {
     public int deleteUser(long id) {
         if (jpaUserRepository.existsById(id)) {
             jpaUserRepository.deleteById(id);
-            System.out.println("删除成功");
+            LOG.info("删除成功");
             return ErrorCode.DELETESUCCESS;
         }
-        System.out.println("删除失败");
+        LOG.info("删除失败");
         return ErrorCode.NOTEXISTUSER;
     }
 
@@ -50,10 +51,10 @@ public class UserService implements IUserService {
     public int updateUser(User user) {
         if (jpaUserRepository.existsById(user.getId())){
             jpaUserRepository.save(user);
-            System.out.println("更新成功");
+            LOG.info("更新成功");
             return ErrorCode.UPDATESUCCESS;
         }
-        System.out.println("更新失败");
+        LOG.info("更新失败");
         return ErrorCode.UPDATEFAIL;
     }
 
@@ -62,7 +63,7 @@ public class UserService implements IUserService {
         User user = null;
         if (jpaUserRepository.existsById(id)){
             user = jpaUserRepository.findById(id).get();
-            System.out.println(user.toString());
+            LOG.info(user.toString());
         }
         return user;
     }

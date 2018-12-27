@@ -11,5 +11,5 @@ mybatis:
   config-location: classpath:mybatis_starter/config.xml
 
 zqconfig: #自定义配置
-  author: zaiqiang333
+  author: zaiqiang345
 

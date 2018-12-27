@@ -1,7 +1,6 @@
 package com.zq.zqplayer;
 
 import com.zq.zqplayer.mapper.UserMapper;
-import com.zq.zqplayer.userjpa.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -17,6 +16,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import com.zq.zqplayer.model.User;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

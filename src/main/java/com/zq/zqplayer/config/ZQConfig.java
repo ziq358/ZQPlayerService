@@ -5,14 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties(prefix="zqconfig")
+@lombok.Data
 public class ZQConfig{
     private String author;
-
-    public String getAuthor(){
-        return author;
-    }
-
-    public void setAuthor(String author){
-        this.author = author;
-    }
 }
