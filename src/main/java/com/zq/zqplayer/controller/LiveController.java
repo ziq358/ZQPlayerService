@@ -4,9 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.zq.zqplayer.ResultModel;
 import com.zq.zqplayer.ResultModelTool;
-import com.zq.zqplayer.model.live.PandaTvDataBean;
-import com.zq.zqplayer.model.live.PandaTvLiveDataBean;
-import com.zq.zqplayer.model.live.VideoHttpResult;
+import com.zq.zqplayer.model.live.*;
 import com.zq.zqplayer.model.request.LiveListItemRequestBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -40,7 +38,7 @@ import org.springframework.web.client.RestTemplate;
 public class LiveController {
 
     @PostMapping("/live/list")
-    public VideoHttpResult<PandaTvDataBean> list(@NonNull @RequestBody LiveListRequestBean liveListRequestBean)throws java.io.IOException{
+    public ResultModel list(@NonNull @RequestBody LiveListRequestBean liveListRequestBean)throws java.io.IOException{
         log.info(liveListRequestBean.toString());
         String result = "";
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -75,12 +73,33 @@ public class LiveController {
 
         VideoHttpResult<PandaTvDataBean> resultObject = JSON.parseObject(result, new TypeReference<VideoHttpResult<PandaTvDataBean>>(){});
         log.info("resultObject = " + resultObject);
-        return resultObject;
+
+        List<ZQLiveListItemBean> liveListItemBeans = new ArrayList<>();
+        List<PandaTvListItemBean> items = resultObject.getData().getItems();
+        if(items != null && !items.isEmpty()){
+            for (PandaTvListItemBean pandaTvListItemBean : items) {
+                ZQLiveListItemBean zqLiveListItemBean = new ZQLiveListItemBean();
+                zqLiveListItemBean.setId(pandaTvListItemBean.getId());
+                zqLiveListItemBean.setName(pandaTvListItemBean.getName());
+                PandaTvListItemBean.Picture picture = pandaTvListItemBean.getPictures();
+                if(picture != null){
+                    zqLiveListItemBean.setImageUrl(picture.getImg());
+                }
+                liveListItemBeans.add(zqLiveListItemBean);
+            }
+        }
+
+
+        ResultModel resultModel = new ResultModel();
+        resultModel.setCode(1);
+        resultModel.setMsg("请求成功");
+        resultModel.setData(liveListItemBeans);
+        return resultModel;
     }
 
 
     @PostMapping("/live/list/item")
-    public VideoHttpResult<PandaTvLiveDataBean> item(@NonNull @RequestBody LiveListItemRequestBean liveListItemRequestBean)throws java.io.IOException{
+    public ResultModel item(@NonNull @RequestBody LiveListItemRequestBean liveListItemRequestBean)throws java.io.IOException{
         log.info(liveListItemRequestBean.toString());
         RestTemplate restTemplate = new RestTemplate();
         String url = String.format("http://api.m.panda.tv/ajax_get_liveroom_baseinfo?" +
@@ -106,7 +125,28 @@ public class LiveController {
                 new ParameterizedTypeReference<VideoHttpResult<PandaTvLiveDataBean>>() {}).getBody();
         log.info("response = " + response);
 
-        return response;
+
+        VideoInfo videoInfo = response.getData().getInfo().getVideoinfo();
+        String[] pl = videoInfo.getPlflag().split("_");
+        String videoUrl = "";
+        if (pl.length > 0) {
+            videoUrl = "http://pl"
+                    + pl[pl.length - 1]
+                    + ".live.panda.tv/live_panda/"
+                    + videoInfo.getRoom_key()
+                    + "_mid.flv?sign=" + videoInfo.getSign()
+                    + "&time=" + videoInfo.getTs();
+        }
+
+        ZQLiveListItemDetailBean detailBean = new ZQLiveListItemDetailBean();
+        detailBean.setVideoUrl(videoUrl);
+
+        ResultModel resultModel = new ResultModel();
+        resultModel.setMsg("请求成功");
+        resultModel.setCode(1);
+        resultModel.setData(detailBean);
+
+        return resultModel;
     }
 
 }
