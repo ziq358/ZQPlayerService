@@ -60,9 +60,9 @@ public class MybatisTests {
     @Autowired
     private UserMapper userMapper;
     @Test
-    public void mybatisStarterText() {
+    public void mybatisStarterTest() {
         User user = userMapper.getUserById(1);
-        System.out.println(String.format("mybatisStarterText :: %s", user.getName()));
+        System.out.println(String.format("mybatisStarterTest :: %s", user.getName()));
     }
 
 }

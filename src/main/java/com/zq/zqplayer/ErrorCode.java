@@ -15,15 +15,15 @@ public interface ErrorCode {
      * 0 请求成功
      */
 
-    int NETERROR = 10000;
     int NOTEXISTUSER = 10001;
     int ADDSUCCESS = 10002;
     int DELETESUCCESS = 10003;
     int UPDATESUCCESS = 10004;
     int EXISTUSER = 10005;
     int ADDFAIL = 10006;
-    int DELETEFAIL = 10007;
     int UPDATEFAIL = 10008;
-    int REQUESTFAIL = -1;
-    int REQUESTSUCCESS = 0;
+
+
+    int OPERATION_OK = 1; //操作成功
+    int OPERATION_ERROR = 500; //操作失败
 }

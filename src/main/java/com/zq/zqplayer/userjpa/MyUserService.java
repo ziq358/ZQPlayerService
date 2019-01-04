@@ -4,29 +4,28 @@ import com.zq.zqplayer.ErrorCode;
 import org.slf4j.Logger;import org.slf4j.LoggerFactory;import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.zq.zqplayer.model.User;
 
 @Service
-public class UserService implements IUserService {
-private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
+public class MyUserService implements IUserService {
+private static final Logger LOG = LoggerFactory.getLogger(MyUserService.class);
 
     @Autowired
     JpaUserRepository jpaUserRepository;
 
     @Override
-    public java.util.List<User> getAllUser() {
-        java.util.List<User> users = jpaUserRepository.findAll();
+    public java.util.List<MyUser> getAllUser() {
+        java.util.List<MyUser> users = jpaUserRepository.findAll();
         LOG.info(users.toString());
         return users;
     }
 
     @Override
-    public int addUser(User user) {
+    public int addUser(MyUser user) {
         if (jpaUserRepository.existsById(user.getId())){
             LOG.info("userjpa  is existed");
             return ErrorCode.EXISTUSER;
         }
-        User saveUser = jpaUserRepository.save(user);
+        MyUser saveUser = jpaUserRepository.save(user);
         if (saveUser != null && saveUser.getId() == user.getId()) {
             LOG.info("save success");
             return ErrorCode.ADDSUCCESS;
@@ -48,7 +47,7 @@ private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
     }
 
     @Override
-    public int updateUser(User user) {
+    public int updateUser(MyUser user) {
         if (jpaUserRepository.existsById(user.getId())){
             jpaUserRepository.save(user);
             LOG.info("更新成功");
@@ -59,8 +58,8 @@ private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
     }
 
     @Override
-    public User queryUser(long id) {
-        User user = null;
+    public MyUser queryUser(long id) {
+        MyUser user = null;
         if (jpaUserRepository.existsById(id)){
             user = jpaUserRepository.findById(id).get();
             LOG.info(user.toString());

@@ -1,6 +1,7 @@
 package com.zq.zqplayer.mapper;
 
 import com.zq.zqplayer.model.User;
+import com.zq.zqplayer.model.request.UserRegisterRequest;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -11,9 +12,13 @@ import org.apache.ibatis.annotations.Param;
 public interface UserMapper {
     /**
     *
-    * @param id 用户id
+    * @param userId 用户id
     * @return 用户信息
     */
-    User getUserById(@Param("id") int id);
+    User getUserByUserId(@Param("userId") int userId);
+
+    User getUserByName(@Param("name") String name);
+
+    int insertUser(UserRegisterRequest request);
 
 }

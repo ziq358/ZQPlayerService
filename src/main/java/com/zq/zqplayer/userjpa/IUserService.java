@@ -1,24 +1,23 @@
 package com.zq.zqplayer.userjpa;
 
 import java.util.List;
-import com.zq.zqplayer.model.User;
 
 public interface IUserService {
 /**
 *
 * @return 获取所有的用户
 */
-List<User> getAllUser();
+List<MyUser> getAllUser();
 /**
 *
 * @param user
 * @return 增
 */
-int addUser(User user);
+int addUser(MyUser user);
     //删
 int  deleteUser(long id);
     //改
-int updateUser(User User);
+int updateUser(MyUser User);
     //查
-User queryUser(long id);
+    MyUser queryUser(long id);
 }

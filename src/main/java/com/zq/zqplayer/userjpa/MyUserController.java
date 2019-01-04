@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.zq.zqplayer.model.User;
 
 @RestController
 @RequestMapping(value = "/myuser")
@@ -20,8 +19,8 @@ public class MyUserController {
 
     @RequestMapping(value = "/all",method = RequestMethod.GET)
     public ResultModel getAllUser(){
-        List<User> userList = userService.getAllUser();
-        Map<String,List<User>> userMap = new HashMap<>();
+        List<MyUser> userList = userService.getAllUser();
+        Map<String,List<MyUser>> userMap = new HashMap<>();
         if (userList != null) {
             userMap.put("users",userList);
         }
@@ -33,7 +32,7 @@ public class MyUserController {
 
     @PostMapping(value = "/addUser")
     public ResultModel addUser(@RequestParam long id, @RequestParam String name, @RequestParam String age){
-        User user = new User(id,name,age);
+        MyUser user = new MyUser(id,name,age);
         int errorCode = userService.addUser(user);
         ResultModel resultModel = new ResultModel();
         resultModel.setCode(errorCode);
@@ -43,7 +42,7 @@ public class MyUserController {
 
     @PostMapping(value = "/updateUser")
     public ResultModel updateUser(@RequestParam long id, @RequestParam String name, @RequestParam String age){
-        User user = new User(id,name,age);
+        MyUser user = new MyUser(id,name,age);
         int errorCode = userService.updateUser(user);
         ResultModel resultModel = new ResultModel();
         resultModel.setCode(errorCode);
@@ -56,8 +55,8 @@ public class MyUserController {
         int errorCode = userService.deleteUser(id);
         ResultModel resultModel = new ResultModel();
         resultModel.setCode(errorCode);
-        List<User> userList = userService.getAllUser();
-        Map<String,List<User>> usermap = new HashMap<>();
+        List<MyUser> userList = userService.getAllUser();
+        Map<String,List<MyUser>> usermap = new HashMap<>();
         if (userList != null) {
             usermap.put("users",userList);
         }

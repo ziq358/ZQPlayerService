@@ -1,6 +1,7 @@
 package com.zq.zqplayer.service;
 
 import com.zq.zqplayer.model.User;
+import com.zq.zqplayer.model.request.UserRegisterRequest;
 
 /**
 *
@@ -13,6 +14,10 @@ public interface UserService {
     * @param id 用户id
     * @return 返回用户信息
     */
-    User getUserById(int id);
+    User getUserByUserId(int id);
+
+    User getUserByName(String name);
+
+    int insertUser(UserRegisterRequest request);
 
 }
