@@ -14,7 +14,7 @@ public interface UserService {
     * @param id 用户id
     * @return 返回用户信息
     */
-    User getUserByUserId(int id);
+    User getUserByUserId(String userId);
 
     User getUserByName(String name);
 

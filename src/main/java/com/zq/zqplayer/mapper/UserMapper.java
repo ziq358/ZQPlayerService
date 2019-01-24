@@ -15,7 +15,7 @@ public interface UserMapper {
     * @param userId 用户id
     * @return 用户信息
     */
-    User getUserByUserId(@Param("userId") int userId);
+    User getUserByUserId(@Param("userId") String userId);
 
     User getUserByName(@Param("name") String name);
 

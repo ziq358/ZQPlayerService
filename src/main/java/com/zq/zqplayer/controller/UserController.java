@@ -19,7 +19,7 @@ public class UserController {
     UserService userService;
 
     @RequestMapping(value = "/getUserByUserId", method = RequestMethod.GET)
-    public ResultModel getUserByUserId(@RequestParam(value = "userId") int userId){
+    public ResultModel getUserByUserId(@RequestParam(value = "userId") String userId){
         User user = userService.getUserByUserId(userId);
         ResultModel resultModel = new ResultModel();
         resultModel.setCode(1);

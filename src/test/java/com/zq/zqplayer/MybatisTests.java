@@ -1,6 +1,7 @@
 package com.zq.zqplayer;
 
 import com.zq.zqplayer.mapper.UserMapper;
+import com.zq.zqplayer.userjpa.MyUser;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -45,7 +46,7 @@ public class MybatisTests {
             SqlSession session = sqlSessionFactory.openSession();
             try {
                 User user = (User) session.selectOne("mybatis.UserMapper.getUserById", 1);
-                System.out.println(user.getName());
+                System.out.println(user.getUserName());
             } finally {
                 session.close();
             }
@@ -61,8 +62,8 @@ public class MybatisTests {
     private UserMapper userMapper;
     @Test
     public void mybatisStarterTest() {
-        User user = userMapper.getUserById(1);
-        System.out.println(String.format("mybatisStarterTest :: %s", user.getName()));
+        User user = userMapper.getUserByUserId("453463");
+        System.out.println(String.format("mybatisStarterTest :: %s", user.getUserName()));
     }
 
 }
