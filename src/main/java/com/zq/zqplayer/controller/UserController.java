@@ -10,6 +10,8 @@ import com.zq.zqplayer.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
@@ -28,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/login")
-    public ResultModel login(@RequestBody UserLoginRequest request){
+    public ResultModel login(@RequestBody @Valid UserLoginRequest request){
         ResultModel resultModel = new ResultModel();
         User user = userService.getUserByName(request.getUserName());
         if(user != null){

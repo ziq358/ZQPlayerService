@@ -11,7 +11,7 @@ import com.zq.zqplayer.model.request.UserRegisterRequest;
 public interface UserService {
 
     /**
-    * @param id 用户id
+    * @param userId 用户userId
     * @return 返回用户信息
     */
     User getUserByUserId(String userId);

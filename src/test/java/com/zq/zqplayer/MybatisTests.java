@@ -56,14 +56,4 @@ public class MybatisTests {
         }
     }
 
-
-
-    @Autowired
-    private UserMapper userMapper;
-    @Test
-    public void mybatisStarterTest() {
-        User user = userMapper.getUserByUserId("453463");
-        System.out.println(String.format("mybatisStarterTest :: %s", user.getUserName()));
-    }
-
 }
