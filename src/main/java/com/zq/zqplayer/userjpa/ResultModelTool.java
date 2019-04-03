@@ -1,4 +1,6 @@
-package com.zq.zqplayer;
+package com.zq.zqplayer.userjpa;
+
+import com.zq.zqplayer.ResultModel;
 
 import java.util.HashMap;
 import java.util.Map;

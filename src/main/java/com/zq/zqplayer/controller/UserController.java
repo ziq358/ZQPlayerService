@@ -2,7 +2,6 @@ package com.zq.zqplayer.controller;
 
 import com.zq.zqplayer.ErrorCode;
 import com.zq.zqplayer.ResultModel;
-import com.zq.zqplayer.ResultModelTool;
 import com.zq.zqplayer.model.User;
 import com.zq.zqplayer.model.request.UserLoginRequest;
 import com.zq.zqplayer.model.request.UserRegisterRequest;
@@ -35,16 +34,16 @@ public class UserController {
         User user = userService.getUserByName(request.getUserName());
         if(user != null){
             if(user.getPassword().equals(request.getPassword())){
-                resultModel.setCode(ErrorCode.OPERATION_OK);
+                resultModel.setCode(ErrorCode.OK);
                 resultModel.setMsg("登陆成功！");
                 resultModel.setData(user);
             }else {
-                resultModel.setCode(ErrorCode.OPERATION_ERROR);
+                resultModel.setCode(ErrorCode.ERROR);
                 resultModel.setMsg("密码错误！");
             }
 
         }else{
-            resultModel.setCode(ErrorCode.OPERATION_ERROR);
+            resultModel.setCode(ErrorCode.ERROR);
             resultModel.setMsg("用户不存在，请注册！");
         }
         return resultModel;
@@ -55,17 +54,17 @@ public class UserController {
         ResultModel resultModel = new ResultModel();
         User user = userService.getUserByName(request.getUserName());
         if(user != null){
-            resultModel.setCode(ErrorCode.OPERATION_ERROR);
+            resultModel.setCode(ErrorCode.ERROR);
             resultModel.setMsg("用户已存在，请登陆！");
         }else{
             int result = userService.insertUser(request);
             if(result > 0){
                 user = userService.getUserByName(request.getUserName());
-                resultModel.setCode(ErrorCode.OPERATION_OK);
+                resultModel.setCode(ErrorCode.OK);
                 resultModel.setMsg("注册成功！");
                 resultModel.setData(user);
             }else{
-                resultModel.setCode(ErrorCode.OPERATION_ERROR);
+                resultModel.setCode(ErrorCode.ERROR);
                 resultModel.setMsg("注册失败！");
             }
 

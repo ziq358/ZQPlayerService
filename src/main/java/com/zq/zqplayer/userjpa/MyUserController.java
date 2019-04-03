@@ -1,7 +1,6 @@
 package com.zq.zqplayer.userjpa;
 
 import com.zq.zqplayer.ResultModel;
-import com.zq.zqplayer.ResultModelTool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

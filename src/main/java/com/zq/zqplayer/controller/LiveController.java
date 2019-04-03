@@ -3,32 +3,21 @@ package com.zq.zqplayer.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.zq.zqplayer.ResultModel;
-import com.zq.zqplayer.ResultModelTool;
 import com.zq.zqplayer.model.live.*;
 import com.zq.zqplayer.model.request.LiveListItemRequestBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
 import com.zq.zqplayer.model.request.LiveListRequestBean;
-import org.springframework.lang.Nullable;
 import org.springframework.lang.NonNull;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.NameValuePair;
+
 import java.util.List;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.message.BasicNameValuePair;
+
 import org.apache.http.util.EntityUtils;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.entity.ContentType;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.springframework.web.client.RestTemplate;
 
