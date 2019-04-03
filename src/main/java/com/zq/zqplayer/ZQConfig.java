@@ -1,4 +1,4 @@
-package com.zq.zqplayer.config;
+package com.zq.zqplayer;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

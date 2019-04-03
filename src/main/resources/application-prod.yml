@@ -8,8 +8,13 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mybatis_starter/mapper/*.xml
+  #config-location 与 configuration 不能同时用
   config-location: classpath:mybatis_starter/config.xml
+#  configuration:
+#    #配置项：开启下划线到驼峰的自动转换. 作用：将数据库字段根据驼峰规则自动注入到对象属性。
+#    map-underscore-to-camel-case: true
+
 
 zqconfig: #自定义配置
-  author: zaiqiang345
+  author: zaiqiang345F
 
