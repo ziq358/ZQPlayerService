@@ -1,5 +1,5 @@
 server:
-  port: 6789
+  port: 6666
 spring:
   datasource:
     url: jdbc:mysql://193.112.65.251:3307/zqplayer?useSSL=false
