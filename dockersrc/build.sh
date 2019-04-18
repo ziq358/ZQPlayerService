@@ -1,5 +1,6 @@
 #!/bin/bash
 set -xe
+
 cd ..
 ./gradlew clean assemble
 cp -f build/libs/zqplayer-0.0.1-SNAPSHOT.jar dockersrc/zqplayer-0.0.1-SNAPSHOT.jar
