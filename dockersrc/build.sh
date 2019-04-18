@@ -1,7 +1,8 @@
 #!/bin/bash
 set -xe
-../gradlew clean assemble
-cp -f ../build/libs/zqplayer-0.0.1-SNAPSHOT.jar zqplayer-0.0.1-SNAPSHOT.jar
+cd ..
+./gradlew clean assemble
+cp -f build/libs/zqplayer-0.0.1-SNAPSHOT.jar dockersrc/zqplayer-0.0.1-SNAPSHOT.jar
 
 imageId=`docker images|grep -i openjdk/zqplayer|awk '{print $3}'`
 echo "镜像ID = "$imageId
@@ -18,6 +19,7 @@ if [ -n "$imageId" ];then
   echo "成功删除旧镜像"
 fi
 
+cd dockersrc
 docker build -t openjdk/zqplayer:v1 .
 docker run -it -p 1234:6666 \
     --restart=always \
