@@ -1,5 +1,8 @@
 #!/bin/bash
 set -xe
+../gradlew clean assemble
+cp -f ../build/libs/zqplayer-0.0.1-SNAPSHOT.jar zqplayer-0.0.1-SNAPSHOT.jar
+
 imageId=`docker images|grep -i openjdk/zqplayer|awk '{print $3}'`
 echo "镜像ID = "$imageId
 containId=`docker ps -a |grep -i zqplayer_service_v1|awk '{print $1}'`
