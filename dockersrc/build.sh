@@ -22,7 +22,7 @@ fi
 
 cd dockersrc
 docker build -t openjdk/zqplayer:v1 .
-docker run -it -p 1234:6666 \
+docker run -d -p 1234:6666 \
     --restart=always \
     --name=zqplayer_service_v1 \
     openjdk/zqplayer:v1
