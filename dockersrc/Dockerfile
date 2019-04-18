@@ -23,7 +23,7 @@ RUN echo 'Asia/Shanghai' >/etc/timezone
 #创建一个可以从本地主机或其他容器挂载的挂载点
 VOLUME /tmp
 #复制本地主机的 <src>（为 Dockerfile 所在目录的相对路径）到容器中的 <dest>
-COPY ../build/libs/zqplayer-0.0.1-SNAPSHOT.jar zqplayer-0.0.1-SNAPSHOT.jar
+COPY zqplayer-0.0.1-SNAPSHOT.jar zqplayer-0.0.1-SNAPSHOT.jar
 #配置容器启动后执行的命令
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/zqplayer-0.0.1-SNAPSHOT.jar"]
 
