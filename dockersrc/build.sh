@@ -13,6 +13,8 @@ echo "容器ID = "$containId
 if [ -n "$containId" ];then
   echo "停止容器"
   docker stop $containId
+  echo "移除容器"
+  docker container rm $containId
 fi
 if [ -n "$imageId" ];then
   echo "旧镜像将要被删除"
