@@ -10,12 +10,9 @@ import javax.validation.constraints.NotBlank;
  * @date 2018/9/12 14:41
  */
 @Data
-public class LiveInfoRequestBean {
-
-    private String roomid;
-    private String __version;
-    private String slaveflag;
-    private String type;
-    private String __plat;
-
+public class LiveListRequest {
+    private String offset;
+    private String limit;
+    private String live_type;
+    private String game_type;
 }
