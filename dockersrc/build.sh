@@ -12,7 +12,7 @@ echo "容器ID = "$containId
 #字符串非空
 if [ -n "$containId" ];then
   echo "停止容器"
-  docker stop containId
+  docker stop $containId
 fi
 if [ -n "$imageId" ];then
   echo "旧镜像将要被删除"
