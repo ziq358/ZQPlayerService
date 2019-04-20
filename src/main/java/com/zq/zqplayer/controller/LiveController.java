@@ -42,7 +42,7 @@ public class LiveController {
                 liveListRequestBean.getLimit(),
                 liveListRequestBean.getLive_type(),
                 liveListRequestBean.getGame_type());
-
+        log.info(url);
         HttpGet httpGet = new HttpGet(url);
         // 设置header信息
         httpGet.setHeader("Accept", "application/json");
@@ -82,6 +82,7 @@ public class LiveController {
                 liveListItemRequestBean.getLive_type(),
                 liveListItemRequestBean.getLive_id(),
                 liveListItemRequestBean.getGame_type());
+        log.info(url);
         String result = restTemplate.getForObject(url, String.class);
         LiveResponse<LiveItemDetailBean> response = JSON.parseObject(result, new TypeReference<LiveResponse<LiveItemDetailBean>>(){});
         log.info("response = " + response);

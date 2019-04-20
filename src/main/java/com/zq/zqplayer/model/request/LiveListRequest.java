@@ -13,6 +13,6 @@ import javax.validation.constraints.NotBlank;
 public class LiveListRequest {
     private String offset;
     private String limit;
-    private String live_type;
-    private String game_type;
+    private String live_type = "";
+    private String game_type = "";
 }

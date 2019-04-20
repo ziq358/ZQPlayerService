@@ -9,8 +9,8 @@ import lombok.Data;
 @Data
 public class LiveItemDetailRequest {
 
-    private String live_type;
+    private String live_type="";
     private String live_id;
-    private String game_type;
+    private String game_type="";
 
 }
