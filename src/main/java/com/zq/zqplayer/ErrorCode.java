@@ -17,6 +17,7 @@ public interface ErrorCode {
      */
     int OK = 1; //操作成功
     int ERROR = 0; //操作失败
+    int TOKEN_ERROR = 10; //操作失败
 
     int NOTEXISTUSER = 10001;//无此用户
     int ADDSUCCESS = 10002;//添加成功
@@ -27,7 +28,7 @@ public interface ErrorCode {
     int UPDATEFAIL = 10008;//更新失败
 
 
-    long getCode();
+    int getCode();
 
     String getMessage();
 }

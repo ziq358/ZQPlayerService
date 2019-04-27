@@ -37,5 +37,6 @@ dependencies {
     compile "org.projectlombok:lombok"//注解 生成 部分代码 如 getter setter
     compile "org.apache.httpcomponents:httpclient"//httpclient 网络请求
     compile "com.alibaba:fastjson:+"
+    compile "org.springframework.boot:spring-boot-starter-data-redis"
 
 }

@@ -5,6 +5,9 @@ spring:
     url: jdbc:mysql://193.112.65.251:3307/zqplayer?useSSL=false
     username: root
     password: zaiqiang
+  redis:
+    host: 193.112.65.251
+    port: 6379
 
 mybatis:
   mapper-locations: classpath:mybatis_starter/mapper/*.xml

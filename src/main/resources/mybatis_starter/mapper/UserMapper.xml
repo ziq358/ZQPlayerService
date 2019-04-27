@@ -3,15 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zq.zqplayer.mapper.UserMapper">
-    <select id="getUserByUserId" resultType="com.zq.zqplayer.model.User">
+    <select id="getUserByUserId" resultType="com.zq.zqplayer.model.UserInfo">
       select * from user where userId = #{userId}
     </select>
 
-    <select id="getUserByName" resultType="com.zq.zqplayer.model.User">
+    <select id="getUserByName" resultType="com.zq.zqplayer.model.UserInfo">
       select * from user where userName = #{name}
     </select>
 
-    <insert id="insertUser" parameterType="com.zq.zqplayer.model.request.UserRegisterRequest">
+    <insert id="insertUser" parameterType="com.zq.zqplayer.model.UserInfo">
         INSERT INTO user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userName != null and userName.length()>0">
@@ -20,7 +20,7 @@
             <if test="password != null and password.length()>0">
                 password,
             </if>
-            userId,
+            userId
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
             <if test="userName != null and userName.length()>0">
@@ -29,7 +29,7 @@
             <if test="password != null and password.length()>0">
                 #{password},
             </if>
-            REPLACE(UUID(),"-",""),
+            #{userId}
         </trim>
     </insert>
 

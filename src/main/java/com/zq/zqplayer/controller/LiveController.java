@@ -5,6 +5,8 @@ import com.alibaba.fastjson.TypeReference;
 import com.zq.zqplayer.ResultModel;
 import com.zq.zqplayer.model.live.*;
 import com.zq.zqplayer.model.request.LiveItemDetailRequest;
+import com.zq.zqplayer.util.RequestContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +29,15 @@ import javax.validation.Valid;
 @RestController
 public class LiveController {
 
+    @Autowired
+    private RequestContext requestContext;
+
     @PostMapping("/live/list")
     public ResultModel list(@NonNull @RequestBody @Valid LiveListRequest liveListRequestBean)throws java.io.IOException{
+        //会校验是否登录了
+        String userId = requestContext.currentUserInfo().getUserId();
+        log.info("用户ID："+userId);
+
         log.info(liveListRequestBean.toString());
         String result = "";
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -47,7 +56,7 @@ public class LiveController {
         // 设置header信息
         httpGet.setHeader("Accept", "application/json");
         httpGet.setHeader("Content-type", "application/json");
-        httpGet.setHeader("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
+        httpGet.setHeader("UserInfo-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
 
         // 执行请求操作，并拿到结果（同步阻塞）
         CloseableHttpResponse response = httpClient.execute(httpGet);
@@ -73,6 +82,10 @@ public class LiveController {
 
     @PostMapping("/live/list/item")
     public ResultModel item(@NonNull @RequestBody @Valid LiveItemDetailRequest liveListItemRequestBean)throws java.io.IOException{
+
+        String userId = requestContext.currentUserInfo().getUserId();
+        log.info("用户ID："+userId);
+
         log.info(liveListItemRequestBean.toString());
         RestTemplate restTemplate = new RestTemplate();
         String url = String.format("http://api.maxjia.com/api/live/detail/?" +

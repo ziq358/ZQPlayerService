@@ -1,15 +1,12 @@
 package com.zq.zqplayer;
 
-import com.zq.zqplayer.mapper.UserMapper;
-import com.zq.zqplayer.userjpa.MyUser;
+import com.zq.zqplayer.model.UserInfo;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.hibernate.engine.jdbc.ReaderInputStream;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -17,7 +14,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import com.zq.zqplayer.model.User;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -45,7 +41,7 @@ public class MybatisTests {
             SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configinputStream);
             SqlSession session = sqlSessionFactory.openSession();
             try {
-                User user = (User) session.selectOne("mybatis.UserMapper.getUserById", 1);
+                UserInfo user = (UserInfo) session.selectOne("mybatis.UserMapper.getUserById", 1);
                 System.out.println(user.getUserName());
             } finally {
                 session.close();

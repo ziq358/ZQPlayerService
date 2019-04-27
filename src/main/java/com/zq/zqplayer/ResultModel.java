@@ -1,43 +1,14 @@
 package com.zq.zqplayer;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
 public class ResultModel implements Serializable {
     private int code;
     private String msg;
+    private String url;
+    private long timestamp = System.currentTimeMillis();
     private Object data ;
-
-    public ResultModel() {
-
-    }
-
-    public ResultModel(int errorCode, String msg, Object data) {
-        this.code = errorCode;
-        this.msg = msg;
-        this.data = data;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
-    }
 }
