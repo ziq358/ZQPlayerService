@@ -20,14 +20,14 @@ public class UserInfoUtil {
         currentUserInfo.setUserId(userId);
         String sessionKey = Constant.SESSION+"::"+userId;
         Long expireTime = Long.valueOf(10);
-        redisTemplate.opsForValue().set(sessionKey, currentUserInfo, expireTime, TimeUnit.MINUTES);
+        redisTemplate.opsForValue().set(sessionKey, currentUserInfo, expireTime, TimeUnit.DAYS);
     }
 
     public String refreshSession(String token) {
         String sessionKey = Constant.SESSION+"::"+token;
         if (redisTemplate.hasKey(sessionKey)) {
             Long expireTime = Long.valueOf(10);
-            redisTemplate.expire(sessionKey, expireTime, TimeUnit.MINUTES);
+            redisTemplate.expire(sessionKey, expireTime, TimeUnit.DAYS);
         }
         return "reset expire on " + System.currentTimeMillis();
     }

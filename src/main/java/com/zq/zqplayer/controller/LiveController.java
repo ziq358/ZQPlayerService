@@ -35,8 +35,8 @@ public class LiveController {
     @PostMapping("/live/list")
     public ResultModel list(@NonNull @RequestBody @Valid LiveListRequest liveListRequestBean)throws java.io.IOException{
         //会校验是否登录了
-        String userId = requestContext.currentUserInfo().getUserId();
-        log.info("用户ID："+userId);
+//        String userId = requestContext.currentUserInfo().getUserId();
+//        log.info("用户ID："+userId);
 
         log.info(liveListRequestBean.toString());
         String result = "";
@@ -83,8 +83,8 @@ public class LiveController {
     @PostMapping("/live/list/item")
     public ResultModel item(@NonNull @RequestBody @Valid LiveItemDetailRequest liveListItemRequestBean)throws java.io.IOException{
 
-        String userId = requestContext.currentUserInfo().getUserId();
-        log.info("用户ID："+userId);
+//        String userId = requestContext.currentUserInfo().getUserId();
+//        log.info("用户ID："+userId);
 
         log.info(liveListItemRequestBean.toString());
         RestTemplate restTemplate = new RestTemplate();
