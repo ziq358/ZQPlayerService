@@ -1,10 +1,7 @@
-version: "3"
+version: "3.7"
 services:
   zqplayer:
     image: ziq358/zqplayer:v1
-    volumes:
-      - /logs:/logs
-      - /etc/localtime:/etc/localtime
     ports:
       - 1234:6666
     deploy:
