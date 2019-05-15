@@ -12,6 +12,6 @@ services:
       restart_policy:
         condition: on-failure
     networks:
-      - zqplayer
+      - zqplayernet
 networks:
-  zqplayer:
+  zqplayernet:
