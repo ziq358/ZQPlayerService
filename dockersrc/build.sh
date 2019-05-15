@@ -5,7 +5,7 @@ cd ..
 ./gradlew clean assemble
 cp -f build/libs/zqplayer-0.0.1-SNAPSHOT.jar dockersrc/zqplayer-0.0.1-SNAPSHOT.jar
 
-imageId=`docker images|grep -i openjdk/zqplayer|awk '{print $3}'`
+imageId=`docker images|grep -i ziq358/zqplayer|awk '{print $3}'`
 echo "镜像ID = "$imageId
 containId=`docker ps -a |grep -i zqplayer_service_v1|awk '{print $1}'`
 echo "容器ID = "$containId
@@ -23,9 +23,9 @@ if [ -n "$imageId" ];then
 fi
 
 cd dockersrc
-docker build -t openjdk/zqplayer:v1 .
-docker run -d -p 1234:6666 \
-    --restart=always \
-    --name=zqplayer_service_v1 \
-    openjdk/zqplayer:v1
-
+docker build -t ziq358/zqplayer:v1 .
+#docker run -d -p 1234:6666 \
+#    --restart=always \
+#    --name=zqplayer_service_v1 \
+#    ziq358/zqplayer:v1
+docker stack deploy -c docker-compose.yml zqplayer_service

@@ -1,0 +1,17 @@
+version: "3"
+services:
+  zqplayer:
+    image: ziq358/zqplayer:v1
+    volumes:
+      - /logs:/logs
+      - /etc/localtime:/etc/localtime
+    ports:
+      - 1234:6666
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    networks:
+      - zqplayer
+networks:
+  zqplayer:
