@@ -29,7 +29,7 @@ for ((i=0;i<imageNum;i++)){
 }
 
 cd dockersrc
-docker build -t ziq358/zqplayer:v1 .
+docker build -t docker.io/ziq358/zqplayer:v1 .
 #zqplayer_service   + docker-compose.yml中的 zqplayer 为服务名
 docker service rm zqplayer_service_zqplayer || echo "No such service"
 docker stack deploy -c docker-compose.yml zqplayer_service
