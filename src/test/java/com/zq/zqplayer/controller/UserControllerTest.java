@@ -1,7 +1,9 @@
 package com.zq.zqplayer.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.zq.zqplayer.ErrorCode;
 import com.zq.zqplayer.service.UserService;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,14 +52,16 @@ public class UserControllerTest {
     @Test
     public void login() throws Exception {
         JSONObject request = new JSONObject();
-        request.put("username", "zaiqiang2");
-        request.put("password", "wuyanqiang");
+        request.put("username", "ziq358");
+        request.put("password", "123456");
 
         MvcResult result = mockMvc.perform(post("/user/login").contentType(MediaType.APPLICATION_JSON).content(JSONObject.toJSONString(request)))
                 .andExpect(status().isOk())// 期望值 是200 OK
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))// 预期返回值的媒体类型text/plain;charset=UTF-8
                 .andReturn();// 返回执行请求的结果
         System.out.println(result.getResponse().getContentAsString());
+        JSONObject jsonObject = JSONObject.parseObject(result.getResponse().getContentAsString());
+        Assert.assertEquals(String.valueOf(ErrorCode.OK), jsonObject.getString("code"));
     }
 
     @Test
@@ -73,5 +77,7 @@ public class UserControllerTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))// 预期返回值的媒体类型text/plain;charset=UTF-8
                 .andReturn();// 返回执行请求的结果
         System.out.println(result.getResponse().getContentAsString());
+        JSONObject jsonObject = JSONObject.parseObject(result.getResponse().getContentAsString());
+        Assert.assertEquals(String.valueOf(ErrorCode.OK), jsonObject.getString("code"));
     }
 }
