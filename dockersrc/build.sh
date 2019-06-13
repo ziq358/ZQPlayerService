@@ -5,6 +5,13 @@ cd ..
 ./gradlew clean assemble
 cp -f build/libs/zqplayer-0.0.1-SNAPSHOT.jar dockersrc/zqplayer-0.0.1-SNAPSHOT.jar
 
+serviceArray=($(docker service ls |grep -i zqplayer_service_zqplayer|awk '{print $1}'))
+serviceNum=${#serviceArray[@]}
+for ((i=0;i<serviceNum;i++)){
+  echo "移除服务"${serviceArray[i]}
+  docker service rm ${serviceArray[i]}
+}
+
 containId=`docker ps -a |grep -i zqplayer_service_zqplayer|awk '{print $1}'`
 echo "容器ID = "$containId
 containArray=($(docker ps -a |grep -i zqplayer_service_zqplayer|awk '{print $1}'))
