@@ -24,9 +24,9 @@ for ((i=0;i<containNum;i++)){
   docker container rm ${containArray[i]}
 }
 
-imageId=`docker images|grep -i ziq358/zqplayer|awk '{print $3}'`
+imageId=`docker images|grep -i zqplayer|awk '{print $3}'`
 echo "镜像ID = "$imageId
-imageArray=($(docker images|grep -i ziq358/zqplayer|awk '{print $3}'))
+imageArray=($(docker images|grep -i zqplayer|awk '{print $3}'))
 echo ${imageArray[0]}
 imageNum=${#imageArray[@]}
 for ((i=0;i<imageNum;i++)){
