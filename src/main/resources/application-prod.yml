@@ -8,6 +8,7 @@ spring:
   redis:
     host: 193.112.65.251
     port: 6379
+    password: zaiqiang
 
 mybatis:
   mapper-locations: classpath:mybatis_starter/mapper/*.xml
