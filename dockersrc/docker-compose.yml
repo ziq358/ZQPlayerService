@@ -1,7 +1,7 @@
 version: "3"
 services:
   zqplayer:
-    image: docker.io/ziq358/zqplayer:v1
+    image: docker.io/zqplayer:v1
     ports:
       - 1234:6666
     deploy:
