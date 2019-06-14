@@ -35,10 +35,10 @@ for ((i=0;i<imageNum;i++)){
 }
 
 cd dockersrc
-docker build -t docker.io/ziq358/zqplayer:v1 .
+docker build -t ziq358/zqplayer:v1 .
 #docker run -d -p 1234:6666 \
 #    --restart=always \
 #    --name=zqplayer_service_v1 \
 #    docker.io/zqplayer:v1
-docker push docker.io/ziq358/zqplayer:v1
+docker push ziq358/zqplayer:v1
 docker stack deploy -c docker-compose.yml zqplayer_service

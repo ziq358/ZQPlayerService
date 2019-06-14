@@ -10,6 +10,11 @@ spring:
     port: 6379
     password: zaiqiang
 
+logging:
+  file: /logs/${spring.application.name}.log
+  file.max-history: 5 # date
+  file.max-size: 100MB
+
 mybatis:
   mapper-locations: classpath:mybatis_starter/mapper/*.xml
   #config-location 与 configuration 不能同时用
