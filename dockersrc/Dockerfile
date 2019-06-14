@@ -24,6 +24,6 @@ VOLUME /tmp
 #复制本地主机的 <src>（为 Dockerfile 所在目录的相对路径）到容器中的 <dest>
 COPY zqplayer-1.0.0-SNAPSHOT.jar zqplayer-1.0.0-SNAPSHOT.jar
 #配置容器启动后执行的命令
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/zqplayer-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/zqplayer-1.0.0-SNAPSHOT.jar"]
 
 
