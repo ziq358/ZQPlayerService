@@ -40,5 +40,5 @@ docker build -t ziq358/zqplayer:v1 .
 #    --restart=always \
 #    --name=zqplayer_service_v1 \
 #    docker.io/zqplayer:v1
-docker push ziq358/zqplayer:v1
+docker push ziq358/zqplayer:v1 #需要先登录
 docker stack deploy -c docker-compose.yml zqplayer_service
