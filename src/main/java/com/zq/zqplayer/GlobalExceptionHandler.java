@@ -1,6 +1,8 @@
 package com.zq.zqplayer;
 
 
+import com.zq.zqplayer.exception.ServiceException;
+import com.zq.zqplayer.model.ResultModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;

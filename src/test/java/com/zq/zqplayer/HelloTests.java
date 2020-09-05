@@ -1,21 +1,20 @@
 package com.zq.zqplayer;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import com.zq.zqplayer.controller.TestController;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class ConfigurationProcessorTests {
+public class HelloTests {
 
     @Autowired
-    private ZQConfig zqConfig;
+    TestController testController;
 
     @Test
-    public void configTest() {
-        System.out.println(zqConfig.getAuthor());
-    }
+    public void hello() {
+        System.out.println(testController.Hello());
 
+    }
 }

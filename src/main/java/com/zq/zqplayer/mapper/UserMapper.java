@@ -1,17 +1,17 @@
 package com.zq.zqplayer.mapper;
 
-import com.zq.zqplayer.model.UserInfo;
-import org.apache.ibatis.annotations.Param;
+import com.zq.zqplayer.model.user.UserInfo;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
 
-/**
-*
-* @author zaiqiang
-* @since 2018/12/25
-*/
+import java.util.List;
+
 public interface UserMapper {
-    UserInfo getUserByUserId(@Param("userId") String userId);
-
-    UserInfo getUserByName(@Param("name") String name);
-
-    int insertUser(UserInfo user);
+    @Select("SELECT * FROM user")
+    @Results({
+            @Result(property = "id",  column = "id"),
+            @Result(property = "userId", column = "userId")
+    })
+    List<UserInfo> getAll();
 }

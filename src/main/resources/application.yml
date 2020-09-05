@@ -1,6 +1,0 @@
-spring:
-  profiles:
-    active: prod #多环境
-  jpa:
-    show-sql: true
-    open-in-view: true #开启open-in-view的意义: 在事务外也可以访问懒加载的数据

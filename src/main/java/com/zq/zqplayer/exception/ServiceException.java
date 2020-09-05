@@ -1,4 +1,4 @@
-package com.zq.zqplayer;
+package com.zq.zqplayer.exception;
 
 import lombok.Getter;
 
