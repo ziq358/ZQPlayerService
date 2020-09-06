@@ -11,9 +11,7 @@ import java.io.Serializable;
 public class UserInfo implements Serializable {
 
     private long id;
-    private String userId;
-    private String userName;
+    private String user_id;
+    private String user_name;
     private String password;
-    private String token;
-
 }

@@ -9,9 +9,5 @@ import java.util.List;
 
 public interface UserMapper {
     @Select("SELECT * FROM user")
-    @Results({
-            @Result(property = "id",  column = "id"),
-            @Result(property = "userId", column = "userId")
-    })
     List<UserInfo> getAll();
 }

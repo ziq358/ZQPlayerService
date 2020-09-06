@@ -2,6 +2,7 @@ package com.zq.zqplayer;
 
 import com.zq.zqplayer.controller.TestController;
 import com.zq.zqplayer.mapper.LiveMapper;
+import com.zq.zqplayer.mapper.UserMapper;
 import com.zq.zqplayer.model.live.RoomInfo;
 import com.zq.zqplayer.util.PythonUtil;
 import org.junit.jupiter.api.Test;
@@ -19,10 +20,17 @@ public class HelloTests {
     TestController testController;
     @Autowired
     LiveMapper liveMapper;
+    @Autowired
+    private UserMapper userMapper;
 
     @Test
     public void hello() {
         System.out.println(testController.Hello());
+    }
+
+    @Test
+    public void userAll() {
+        System.out.println(userMapper.getAll());
     }
 
     @Test
