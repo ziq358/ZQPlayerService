@@ -20,7 +20,7 @@ public class LiveController {
     @Autowired
     private LiveMapper liveMapper;
 
-    @RequestMapping("/all")
+    @RequestMapping("/list")
     public ResultModel all(){
         ResultModel resultModel = new ResultModel();
         List<RoomInfo> result = liveMapper.getAll();
