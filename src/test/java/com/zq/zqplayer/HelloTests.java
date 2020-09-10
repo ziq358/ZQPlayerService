@@ -36,7 +36,8 @@ public class HelloTests {
     @Test
     public void python() {
         System.out.println("python start");
-        List<RoomInfo> result = PythonUtil.execDouYuPython(0, 5);
+        liveMapper.clean();
+        List<RoomInfo> result = PythonUtil.execDouYuPython(0, 20);
         for (RoomInfo room:result) {
             liveMapper.insert(room);
         }
